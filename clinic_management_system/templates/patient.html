@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homeo Clinic</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(120deg, #2980b9, #8e44ad);
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .login-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .login-container a {
+        background-color: #fff;
+        color: #2980b9;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+
+      .login-container a:hover {
+        background-color: #3498db;
+        color: #fff;
+      }
+
+      .content {
+        margin-top: 60px;
+      }
+
+      .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+      }
+
+      .content h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .content p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 40px;
+      }
+
+      .content .consultation-timing {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .content .consultation-timing h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .content .consultation-timing p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .content .homeo-icon {
+        font-size: 120px;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <a href="{% url 'login' %}">
+        <i class="fas fa-user-md"></i> Doctor Login
+      </a>
+    </div>
+
+    <div class="content">
+      <!-- Local static image -->
+      <img
+        src="https://patientdatabucket2024.s3.ap-south-1.amazonaws.com/static/images/homoeo.jpeg"
+        alt="Homeo Clinic"
+      />
+
+      <h1>Welcome to Dr K S Vijayakumar Homoeo Clinic</h1>
+      <p>
+        Your health is our priority. We offer personalized homeopathic care
+        tailored to your needs.
+      </p>
+
+      <div class="consultation-timing">
+        <h2>Consultation Timings</h2>
+        <p>Monday to Saturday: 8:00 AM - 11:00 AM</p>
+        <p>Friday Evening: Holiday</p>
+        <p>Sunday: Holiday</p>
+        <p>Evening Consultation: 4:00 PM - 8:30 PM</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2024 Dr K S Vijayakumar Homeo Clinic. All rights reserved.</p>
+    </div>
+  </body>
+</html>

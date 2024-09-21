@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Portal</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(120deg, #2980b9, #8e44ad);
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+      }
+
+      .doctor-container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+        width: 400px;
+        text-align: center;
+        position: relative;
+      }
+
+      .doctor-container h2 {
+        margin-bottom: 30px;
+        font-size: 26px;
+        color: #333;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .doctor-container h2::before {
+        content: url("https://img.icons8.com/color/48/000000/doctor-male.png");
+        margin-right: 10px;
+      }
+
+      .doctor-container form {
+        margin-bottom: 20px;
+      }
+
+      .doctor-container input[type="number"] {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        outline: none;
+      }
+
+      .doctor-container input[type="number"]:focus {
+        border-color: #2980b9;
+      }
+
+      .doctor-container button {
+        width: 100%;
+        padding: 15px;
+        background-color: #2980b9;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .doctor-container button i {
+        margin-right: 8px;
+      }
+
+      .doctor-container button:hover {
+        background-color: #3498db;
+      }
+
+      .doctor-container .messages {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #e74c3c;
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .doctor-container .messages li {
+        margin-bottom: 10px;
+      }
+
+      .add-button-container {
+        margin-top: 30px;
+      }
+
+      .add-button-container button {
+        background-color: #27ae60;
+        color: #fff;
+      }
+
+      .add-button-container button:hover {
+        background-color: #2ecc71;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doctor-container">
+      <h2>Doctor Portal</h2>
+      <form action="{% url 'show-details' %}" method="post">
+        {% csrf_token %}
+        <label for="cardno">
+          <strong>Enter Card Number to Fetch Patient Data:</strong>
+        </label>
+        <input
+          type="number"
+          name="cardno"
+          id="cardno"
+          placeholder="Enter Patient ID"
+          required
+        />
+        <button type="submit" name="details">
+          <i class="fas fa-search"></i> Show Details
+        </button>
+
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li><i class="fas fa-exclamation-circle"></i> {{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </form>
+
+      <div class="add-button-container">
+        <form method="post" action="{% url 'add_details' %}">
+          {% csrf_token %}
+          <button type="submit" name="add_detail">
+            <i class="fas fa-user-plus"></i> Add New Patient
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
